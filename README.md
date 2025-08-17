@@ -17,10 +17,11 @@ It is built with **Node.js + Express** and provides REST APIs for handling user 
 ---
 
 🏗️ Tech Stack
-Backend Framework: Node.js, Express.js
-AI Model API: Groq API
-Mailing Service: Nodemailer with Gmail
-Deployment: Render
+
+- Backend Framework: Node.js, Express.js
+- AI Model API: Groq API
+- Mailing Service: Nodemailer with Gmail
+- Deployment: Render
 
 
 ⚙️ Installation & Setup
@@ -49,11 +50,12 @@ Deployment: Render
 
 5. Deployment
   1. When deploying (Render / Railway / Heroku), ensure you:
-       Add all environment variables in the hosting platform
-       Use the provided start script from package.json:
+     
+       - Add all environment variables in the hosting platform
+       - Use the provided start script from package.json:
        ```bash
-    "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-    }
+       "scripts": {
+       "start": "node server.js",
+       "dev": "nodemon server.js"
+       }
    
