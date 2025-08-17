@@ -1,14 +1,20 @@
-📌 AI Meeting Notes Summarizer – AI-notes-summarizer-backend
+# 📌 AI Meeting Notes Summarizer – Backend  
 
-This is the backend service for the AI Meeting Notes Summarizer application. It is built with Node.js + Express and provides REST APIs for handling user requests, generating AI-powered summaries, and integration with the frontend.
+This is the **backend service** for the AI Meeting Notes Summarizer application.  
+It is built with **Node.js + Express** and provides REST APIs for handling user requests, generating AI-powered summaries, and integration with the frontend.  
 
-🚀 Features
-✨ RESTful API built with Express.js
-🔒 Environment variable–based configuration
-📩 Email sending support with Nodemailer
-🌍 CORS support for secure frontend-backend communication
-📑 AI-powered meeting notes summarization (Groq API)
-🛠️ Production-ready deployment (supports Render)
+---
+
+## 🚀 Features  
+
+- ✨ **RESTful API** built with Express.js  
+- 🔒 **Environment variable**–based configuration  
+- 📩 **Email sending support** with Nodemailer  
+- 🌍 **CORS support** for secure frontend-backend communication  
+- 📑 **AI-powered meeting notes summarization** (Groq API)  
+- 🛠️ **Production-ready deployment** (supports Render)  
+
+---
 
 🏗️ Tech Stack
 Backend Framework: Node.js, Express.js
