@@ -72,24 +72,38 @@ app.post("/send-email", async (req, res) => {
         .json({ error: "Recipient email and summary are required" });
     }
 
+    // Debug: check if env vars exist
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("❌ Missing email environment variables");
+      return res.status(500).json({ error: "Email configuration missing" });
+    }
+
+    // Gmail SMTP (better than service: "gmail")
     let transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for 465, false for 587
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS, // App Password if using 2FA
+      },
     });
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    // Send mail
+    const info = await transporter.sendMail({
+      from: `"AI Notes Summarizer" <${process.env.EMAIL_USER}>`,
       to,
       subject: "Meeting Summary",
-      // Send HTML so formatting (bold, lists) is preserved
-      html: `<div style="font-family: Arial, sans-serif;">${summary}</div>`,
+      html: `<div style="font-family: Arial, sans-serif; line-height: 1.6;">${summary}</div>`,
     });
 
+    console.log("✅ Email sent:", info.messageId);
     res.json({ message: "Email sent successfully!" });
   } catch (err) {
-    console.error("Error in email:", err);
-    res.status(500).json({ error: "Failed to send email" });
+    console.error("❌ Error in email:", err.message, err.response);
+    res.status(500).json({ error: "Failed to send email", details: err.message });
   }
 });
+
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
